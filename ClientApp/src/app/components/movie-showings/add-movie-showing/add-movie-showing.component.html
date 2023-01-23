@@ -1,0 +1,56 @@
+<div class="grid">
+  <form (ngSubmit)="submit()" class="container" #form="ngForm">
+
+    <!-- Cinema hall -->
+    <div class="row">
+      <div class="input-field col s8">
+        <select class="browser-default"
+                [(ngModel)]="movieShowing.cinemaHall"
+                name="cinemaHall" required>
+          <option
+            *ngFor="let cinemaHall of allCinemaHalls | async"
+            [ngValue]="cinemaHall">
+            {{ cinemaHall.code }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Movie -->
+    <div class="row">
+      <div class="input-field col s8">
+        <select class="browser-default"
+                [(ngModel)]="movieShowing.movie"
+                name="movie" required>
+          <option
+            *ngFor="let movie of allMovies | async"
+            [ngValue]="movie">
+            {{ movie.title }} ({{ movie.year }})
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Date -->
+    <div class="row">
+      <div class="input-field col s8">
+        <input matInput [matDatepicker]="datePicker" placeholder="Date"
+               [(ngModel)]="date" name="date">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </div>
+    </div>
+
+    <!-- Time -->
+    <div class="row">
+      <div class="input-field col s8">
+        <input matInput [ngxTimepicker]="timePicker" [format]="24" placeholder="Time"
+               [(ngModel)]="time" name="time">
+        <ngx-material-timepicker #timePicker></ngx-material-timepicker>
+      </div>
+    </div>
+
+    <button class="btn-small" type="submit" [disabled]="form.invalid">Send</button>
+    <button class="btn-small" type="reset">Reset</button>
+  </form>
+</div>

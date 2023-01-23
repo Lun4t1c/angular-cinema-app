@@ -1,0 +1,19 @@
+<form (ngSubmit)="submit()">
+  <fieldset>
+    <legend>Login</legend>
+    <div class="form-field">
+      <label>Email:</label>
+      <input name="email" [(ngModel)]="email">
+    </div>
+    <div class="form-field">
+      <label>Password:</label>
+      <input name="password" [(ngModel)]="password"
+             type="password">
+    </div>
+  </fieldset>
+  <div class="form-buttons">
+    <button class="button button-primary" type="submit">Login</button>
+    <button class="button button-primary" (click)="register()">Register</button>
+    <div *ngIf="isLoginFailed">LOGIN FAILED</div>
+  </div>
+</form>

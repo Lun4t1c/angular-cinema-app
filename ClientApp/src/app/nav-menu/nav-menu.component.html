@@ -1,0 +1,85 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">cinema_warmup_app</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/counter']"
+              >Counter</a
+            >
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
+              >Fetch data</a
+            >
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/movie-showings']"
+            >Movie showings</a
+            >
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']"
+              *ngIf="authService.isLoggedIn | async">
+            <a class="nav-link text-dark" [routerLink]="['/users']"
+            >Users</a
+            >
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']"
+              *ngIf="(authService.loggedUser | async) === null; else loginElseBlock">
+            <a class="nav-link text-dark" [routerLink]="['/login']"
+            >Login</a
+            >
+          </li>
+          <ng-template #loginElseBlock>
+            {{ (authService.loggedUser | async)?.email }}
+            <button class="btn" (click)="authService.logoutUser()">Logout</button>
+          </ng-template>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']"
+              *ngIf="(authService.loggedUser | async) !== null">
+            <a class="nav-link text-dark" [routerLink]="['/seats/5']"
+            >Seats</a
+            >
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']"
+              *ngIf="(authService.loggedUser | async) !== null">
+            <a class="nav-link text-dark" [routerLink]="['/currently-showed-movies']"
+            >Currently showed movies</a
+            >
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

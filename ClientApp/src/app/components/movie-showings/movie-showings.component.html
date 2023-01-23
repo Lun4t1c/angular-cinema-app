@@ -1,0 +1,11 @@
+<div>
+  <button (click)="addMovieShowing()">Add movie showing</button>
+
+  <div class="container">
+    <div class="row" *ngFor="let movieShowing of movieShowings | async">
+      {{ (movieShowing.cinemaHall | async)?.code }} - {{ (movieShowing.movie | async)?.title }}
+      - {{ movieShowing.beginDate | date:'medium' }}
+    </div>
+  </div>
+</div>
+

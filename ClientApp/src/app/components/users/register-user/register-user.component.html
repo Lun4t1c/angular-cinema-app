@@ -1,0 +1,27 @@
+<p>Register</p>
+<form (ngSubmit)="registerUser()" class="container" #form="ngForm">
+
+  <div class="row">
+    <div class="input-field col s8">
+      <input id="email"
+             type="text"
+             [(ngModel)]="userModel.email"
+             name="email"
+             required />
+      <label for="email">Email</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s8">
+      <input id="password"
+             type="password"
+             [(ngModel)]="userModel.password"
+             name="password"
+             required />
+      <label for="password">Password</label>
+    </div>
+  </div>
+
+  <button class="btn-small" type="submit" [disabled]="form.invalid">Register</button>
+</form>

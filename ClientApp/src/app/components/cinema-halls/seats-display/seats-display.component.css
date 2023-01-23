@@ -1,0 +1,40 @@
+.container{
+  display: grid;
+  background: #190538;
+  margin-top: 50px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(7, 100px);
+}
+
+.screen{
+  background: black;
+  color: wheat;
+  width: 95%;
+  height: 50px;
+  margin: auto;
+  text-align: center;
+}
+
+.seat-entry-available{
+  margin: 5px;
+  background: #055e20;
+  color: yellow;
+}
+
+.seat-entry-selected{
+  margin: 5px;
+  background: #b3af09;
+  color: black;
+}
+
+.seat-entry-already-occupied{
+  background: red;
+}
+
+.seat-entry-available:hover{
+  background: #097d2c;
+}
+
+.seat-entry-selected:hover{
+  background: #f0eb0c;
+}

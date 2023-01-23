@@ -1,0 +1,20 @@
+<div>
+
+  <div *ngIf="movieObservable | async as movie"
+    class="movie-panel">
+
+    <app-movie-entry [movie]="movie">
+    </app-movie-entry>
+
+  </div>
+
+  <div class="showings-panel">
+    <a *ngFor="let showing of movieShowings | async"
+       class="nav-link text-dark"
+       [routerLink]="['/seats/' + showing.id]"
+    >
+      {{ showing.beginDate | date:'dd/MM/yyyy HH:mm' }}
+    </a>
+  </div>
+
+</div>

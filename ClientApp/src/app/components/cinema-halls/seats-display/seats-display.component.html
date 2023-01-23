@@ -1,0 +1,16 @@
+<div class="screen"> SCREEN </div>
+
+<div class="container" >
+
+  <div *ngFor="let seat of seatsObservable | async"
+       class="seat-entry-available" (click)="seatClicked(seat)"
+       [ngClass]="selectedSeatsIds.has(seat.id) ? 'seat-entry-selected' : 'seat-available'">
+    {{ seat.code }}
+  </div>
+
+  <button class="btn-primary"
+    (click)="confirmReservation()">
+    Confirm reservation
+  </button>
+
+</div>

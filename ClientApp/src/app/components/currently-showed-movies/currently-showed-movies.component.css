@@ -1,0 +1,6 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -5px; /* remove the inital 5px space */
+  width: auto;
+}
